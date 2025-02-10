@@ -1,146 +1,248 @@
-* { 
-    margin: 0;
-    padding: 0;
-    box-sizing: 0;
+:root {
+    /* Fonts */
+    --font-primary: 'Playfair Display', serif;
+    --font-secondary: 'Inter', sans-serif;
+    
+    /* Fontgroottes in em */
+    --font-size-small: 1em; /* 16px */
+    --font-size-medium: 1.25em; /* 20px */
+    --font-size-large: 3.125em; /* 50px */
+    
+    /* Kleuren */
+    --color-white: #FFFFFF; /* Wit */
+    --color-black: #131313; /* Donker */
+    --color-primary: #A198F5; /* Basis paars */
+    --color-light-purple: #E7D4F8; /* Licht paars */
+    
+    /* Marges en padding */
+    --spacing-small: 0.5em; /* 8px */
+    --spacing-medium: 1em; /* 16px */
+    --spacing-large: 2em; /* 32px */
 }
 
-html, body {
-    width: 100%;
-    height: 100%;
-    background-color: rgb(0, 0, 0);
-    overflow-x: hidden;
-}
-
-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-a {
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-}
-
-h1 {
-    width: 100%;
-    color: white;
-    font-size: 48vw;
-    font-weight:400;
-    text-align: center;
+* {
     margin: 0;
 }
 
-main {
-    width: 100%;
-    height: 1200vh;
+body {
+    background-color: var(--color-primary);
 }
-
-nav {
-    position: fixed;
-    top: 0;
-    padding: 1em;
-    width: 100%;
+/* Basisstijl voor de sectie */
+section:first-of-type {
     display: flex;
-    justify-content: center; 
-    z-index: ;
-
+    height: 90vh;
+    flex-direction: column; /* Default: de containers naast elkaar */
 }
 
-.wrapper-404 {
+/* Linker helft */
+section:first-of-type > div:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--color-black);
+    padding: 20px 40px 40px 40px;
+    order: 2;
+  
+}
+
+section:first-of-type > div:first-of-type h1 {
+    font-family: var(--font-primary);
+    font-size: 13vw;
+    font-weight: 500;
+    color: var(--color-white);
+    line-height: 92%;
+}
+
+span {
+    font-style: italic;
+}
+
+section:first-of-type > div:first-of-type h2 {
+    font-family: var(--font-secondary);
+    font-size: 5vw;
+    color: var(--color-white);
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+section:first-of-type > div:first-of-type button {
+    margin-top: 20px;
+    padding: 15px 20px;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 100px;
+}
+
+section:first-of-type > div:first-of-type button:hover {
+    color: var(--color-white);
+    border: solid 1px #fff;
+    background-color: #131313;
+}
+
+/* Rechter helft */
+section:first-of-type > div:last-of-type {
+    flex: 1;
+    background-color: var(--color-black);
+    position: relative; /* Essentieel voor absolute positioning binnen deze container */
+    /* height: 100%; */
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+}
+
+
+/* orb */
+.orb {
+    animation: spin 2s linear infinite;
+    width: 15vw; /* Schaal de breedte van de orb op basis van de breedte van de viewport */
+    height: 15vw; /* Schaal de hoogte van de orb op basis van de breedte van de viewport */
+    border-radius: 50%;
+    box-shadow: 
+        inset 0 0 50px #fff,
+        inset 20px 0 60px violet,
+        inset -20px 0 60px blue,
+        inset 20px 0 3000px violet,
+        inset -20px 0 300px blue,
+        0 0 50px #fff,
+        -10px 0  60px violet,
+        10px 0 60px blue;
     position: absolute;
-    top:0;
-    width: 400vw;
-    height: 100vh;
-    will-change: transform; 
-    /* onbekende property */
 }
 
-.card {
-    position: absolute;
-    width: 300px;
-    height: 300px;
-    border-radius: 20px;
-    overflow: hidden;
-
+/* Orb1 */
+.orb1 {
+    animation: spin 2.1s -1s linear infinite;
+    width:100px; /* Gebruik viewport breedte voor schaal */
+    height: 100px; /* Gebruik viewport breedte voor schaal */
+    top: 70%; /* Verplaats orb 1 naar beneden */
+    left: 40%; /* Verplaats orb 1 naar links */
 }
 
-#card-1 {
-    top: 50%;
-    left: 20%
+/* Orb2 */
+.orb2 {
+    animation: spin 1.9s -1.3s linear infinite;
+    width: 70px; /* Gebruik viewport breedte voor schaal */
+    height: 70px; /* Gebruik viewport breedte voor schaal */
+    top: 50%; /* Verplaats orb 2 naar beneden */
+    left: 60%; /* Verplaats orb 2 naar het midden */
 }
 
-#card-2 {
-    top: 25%;
-    left: 40%
+/* Orb3 */
+.orb3 {
+    width: 170px; /* Gebruik viewport breedte voor schaal */
+    height: 170px; /* Gebruik viewport breedte voor schaal */
+    top: 25%; /* Verplaats orb 3 naar beneden */
+    left: 25%;  /* Plaatst de derde orb in de derde kolom */
+    box-shadow: 
+        inset 0 0 50px #fff,
+        inset 60px 0 120px violet,
+        inset -30px 0 60px blue,
+        inset 60px 0 900px violet,
+        inset -60px 0 900px blue,
+        0 0 150px #fff,
+        -30px 0  120px violet,
+        30px 0 120px blue;
 }
 
-#card-3 {
-    top: 45%;
-    left: 60%
-}
-
-#card-4 {
-    top: 15%;
-    left: 80%
-}
-
-
-.outro {
-    position: absolute;
-    top: 150vh;
-    width: 100%;
-    height: 110vh;
-    background-color: rgb(255, 255, 255);
-}
-
-.outro h1 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: max-content;
-    font-size: 40px;
-    font-weight: lighter;
-    text-align: center;
-    color: black;
-}
-
-@media (max-width: 900px) {
-    .wrapper-404 {
-        padding-top: 20em;
+/* Animatie van de orbs */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg) translateY(0);
     }
-    
+    25% {
+        transform: rotate(90deg) translateY(5px);
+    }
+    50% {
+        transform: rotate(180deg) translateY(10px);
+    }
+    75% {
+        transform: rotate(270deg) translateY(5px);
+    }
+    100% {
+        transform: rotate(360deg) translateY(0);
+    }
 }
 
-h2  {
-    color: black;
-    background-color: blue;
-    font-size: 20px;
+
+section:nth-of-type(2) {
+    background-image: linear-gradient(#A198F5, #E7D4F8);
+    display: flex;
+    height: 64vh;
+    flex-direction: column; 
 }
 
 
-/* .next {
-    position: absolute;
-    top: 250vh;
-    width: 100%;
-    height: 70vh;
-    background-color: rgb(17, 17, 17);
-    border-radius: 50px 50px 0 0;
-    
+
+section:nth-of-type(2) > h1 , p{
+ text-align: center;
 }
 
-.next h1 {
-    position: absolute;
-    top: 15%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: max-content;
-    /* background-color: aqua; */
-    font-size: 40px;
-    font-weight: lighter;
+
+section:nth-of-type(2) > h1 {
+    margin-top: 1.3em;
+    margin-bottom: 5%;
+    font-family: var(--font-primary);
+    font-size: 2.9em;
+    font-weight: 300;
+}
+
+section:nth-of-type(2) > p {
+    font-family: var(--font-secondary);
+    margin: 0px 10%;
+    line-height: 130%;
+}
+
+section:nth-of-type(2) > div {
+    display: flex;
+    flex-direction: column;
+    /* background-color: aquamarine; */
+    justify-content: center;
+    gap: 1.3em;
+    margin-top: 2em;
+
+}
+
+section:nth-of-type(2) > div a {
+    padding: 15px 15px;
+
+    margin: 0 5em;
+    background-color: var(--color-white);
+    color: var(--color-black);
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    border-radius: 100px;
+    font-family: var(--font-secondary);
+    text-decoration: none;
+    font-size: 0.9em;
     text-align: center;
-    color: rgb(255, 255, 255);
-} */
+}
 
+section:nth-of-type(2) > div a:first-of-type {
+    background-color: transparent;
+    border: 1.5px solid black;
+}
+
+section:nth-of-type(2) > div a:nth-of-type(2) {
+    background-color: var(--color-black);
+    color: white;
+}
+
+@media screen and (min-width: 1024px) {
+    section:nth-of-type(2) > div {
+        flex-direction: row; /* Zet de knoppen naast elkaar */
+        justify-content: center; /* Centreert de knoppen */
+        align-items: center; /* Zorgt dat ze netjes uitgelijnd zijn */
+        gap: 2em; /* Ruimte tussen de knoppen */
+    }
+
+    section:nth-of-type(2) > div a {
+        margin: 0; /* Reset de margin zodat ze niet te veel uitlopen */
+        padding: 15px 20px; /* Zorgt voor gelijke knoppen */
+    }
+}
