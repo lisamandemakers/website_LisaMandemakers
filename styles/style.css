@@ -25,7 +25,152 @@
 }
 
 body {
-    background-color: var(--color-light-purple);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--color-black);
+}
+
+/* 
+------------------------------------------------------
+------------------------nav---------------------
+------------------------------------------------------ */
+
+
+nav {
+    background-color: #fff;
+    padding-top: 1em;
+    border-radius: 50px;
+    padding: 0px 10px;
+    box-shadow: 0 30px 30px -15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 170px;
+    position: sticky; /* Zorgt ervoor dat de kaart sticky wordt */
+    top: 2%; /* Blijft plakken aan de bovenkant */
+    z-index: 100;
+    overflow: hidden; /* Verbergt de tekst buiten de balk */
+    transition: padding-left 0.2s ease-in-out; /* Zorgt voor de transitie van breedte */ /* Zorgt ervoor dat het voor andere elementen komt */
+}
+
+nav:hover {
+    padding-left: 120px ; /* Vergroot de breedte wanneer je eroverheen hovert */
+}
+
+nav .extra-text {
+    opacity: 0;
+    font-family: var(--font-secondary); /* Zorgt ervoor dat de tekst standaard verborgen is */
+    visibility: hidden; /* Verbergt de tekst */
+    position: absolute;
+    padding-left: 13px;
+    left: 5px; /* Plaatst de tekst aan de rechterkant */
+    top: 50%;
+    transform: translateY(-50%); /* Zorgt ervoor dat de tekst verticaal gecentreerd is */
+    transition: opacity 0.2s ease-in-out, visibility 0.3s ease-in-out; /* Zorgt voor een vloeiende overgang */
+}
+  
+
+nav:hover .extra-text {
+    opacity: 1; /* Maakt de tekst zichtbaar als je eroverheen hovert */
+    visibility: visible; /* Zorgt ervoor dat de tekst zichtbaar wordt */
+}
+
+
+/* nav {
+    position: relative;
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #131313;
+} */
+
+nav p {
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+}
+
+ul {
+    list-style: none;
+    padding: 15px 20px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 15px;
+
+}
+
+ul li {
+    width: 15px;
+    height: 15px;    
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+ul li:hover {
+    transform: scale(1.1);
+}
+
+#purple {
+    background-color: rgb(141, 130, 238);
+}
+#pink {
+    background-color: pink;
+}
+#blue {
+    background-color: cyan;
+}
+#green {
+    background-color: rgb(102, 239, 102);
+}
+#yellow {
+    background-color: rgb(244, 226, 32);
+}
+
+/* Color selected styles */
+
+body.red {
+    background-color: #ef5350;
+    color:  #ef5350;
+}
+body.green {
+    background-color: #66bb6a;
+    
+}
+body.amber {
+    background-color: #ffca28;
+    color: #ffca28;
+}
+body.blue {
+    background-color: #42a5f5;
+    color: #42a5f5;
+}
+body.gray {
+    background-color: #bdbdbd;
+    color: #bdbdbd;
+}
+
+.orb.selected {
+    box-shadow: 
+        inset 0 0 50px #fff,
+        inset 60px 0 120px orange,
+        inset -30px 0 60px yellow,
+        inset 60px 0 900px orange,
+        inset -60px 0 900px yellow,
+        0 0 150px #fff,
+        -30px 0 120px orange,
+        30px 0 120px yellow;
+
+
+     /* Maak de geselecteerde orb zichtbaar door een rand toe te voegen */
+}
+
+.color-item.active {
+    outline: 1px solid rgba(0, 0, 0, 0.546); /* Je kunt hier elke kleur kiezen die je wilt */
+    outline-offset: 1px; /* Dit zorgt ervoor dat de outline een beetje van de knop afstaat */
 }
 
 
@@ -36,7 +181,7 @@ body {
 /* Basisstijl voor de sectie */
 section:first-of-type {
     display: flex;
-    height: 100vh;
+    height: 96vh;
     flex-direction: column; /* Default: de containers naast elkaar */
 }
 
@@ -273,6 +418,7 @@ z-index: 1;
 
 section:nth-of-type(2) {
     background-image: linear-gradient(#A198F5, #E7D4F8);
+    background-color: #A198F5;
     display: flex;
     flex-direction: column; 
     justify-items: center;
