@@ -25,12 +25,18 @@
 }
 
 body {
-    background-color: var(--color-primary);
+    background-color: var(--color-light-purple);
 }
+
+
+/* 
+------------------------------------------------------
+------------------------SECTION 1---------------------
+------------------------------------------------------ */
 /* Basisstijl voor de sectie */
 section:first-of-type {
     display: flex;
-    height: 90vh;
+    height: 100vh;
     flex-direction: column; /* Default: de containers naast elkaar */
 }
 
@@ -149,6 +155,24 @@ section:first-of-type > div:last-of-type {
         30px 0 120px blue;
 }
 
+
+.orb4 {
+width: 70px; /* Gebruik viewport breedte voor schaal */
+height: 70px; /* Gebruik viewport breedte voor schaal */
+top: 160%; /* Verplaats orb 3 naar beneden */
+left: 10%;  /* Plaatst de derde orb in de derde kolom */
+box-shadow: 
+    inset 0 0 50px #fff,
+    inset 60px 0 120px blue,    /* Omgewisseld met violet */
+    inset -30px 0 60px violet,  /* Omgewisseld met blauw */
+    inset 60px 0 900px blue,    /* Omgewisseld met violet */
+    inset -60px 0 900px violet, /* Omgewisseld met blauw */
+    0 0 150px #fff,
+    -30px 0  120px blue,        /* Omgewisseld met violet */
+    30px 0 120px violet;        /* Omgewisseld met blauw */
+z-index: 1;
+}
+
 /* Animatie van de orbs */
 @keyframes spin {
     0% {
@@ -168,12 +192,92 @@ section:first-of-type > div:last-of-type {
     }
 }
 
+@media screen and (min-width: 1024px) {
+    section:first-of-type {
+        flex-direction: row;
+        display: flex;
+    }
+
+    section:first-of-type > div:first-of-type {
+        order: 1;
+        padding-left: 8vw;
+    }
+
+    section:first-of-type > div:first-of-type h1 {
+        font-size: 8vw;
+    }
+
+    section:first-of-type > div:first-of-type h2 {
+        font-size: 2vw;
+    }
+
+    section:first-of-type > div:last-of-type {
+        order: 2;
+    }
+
+    .orb1 {
+        width:150px; /* Gebruik viewport breedte voor schaal */
+        height: 150px; /* Gebruik viewport breedte voor schaal */
+        top: 50%; /* Verplaats orb 1 naar beneden */
+        left: 35%;
+    }
+
+    .orb2 {
+        animation: spin 1.9s -1.3s linear infinite;
+        width: 110px; /* Gebruik viewport breedte voor schaal */
+        height: 110px; /* Gebruik viewport breedte voor schaal */
+        top: 42%; /* Verplaats orb 2 naar beneden */
+        left: 65%; /* Verplaats orb 2 naar het midden */
+    }
+
+    .orb3 {
+        width:210px; /* Gebruik viewport breedte voor schaal */
+        height: 210px; /* Gebruik viewport breedte voor schaal */
+        top: 20%; /* Verplaats orb 3 naar beneden */
+        left: 25%;  /* Plaatst de derde orb in de derde kolom */
+    }
+
+}
+
+
+@media screen and (min-width: 1200px) {
+
+    .orb1 {
+        width:200px; /* Gebruik viewport breedte voor schaal */
+        height: 200px; /* Gebruik viewport breedte voor schaal */
+        top: 50%; /* Verplaats orb 1 naar beneden */
+        left: 35%;
+    }
+
+    .orb2 {
+        animation: spin 1.9s -1.3s linear infinite;
+        width: 120px; /* Gebruik viewport breedte voor schaal */
+        height: 120px; /* Gebruik viewport breedte voor schaal */
+        top: 37%; /* Verplaats orb 2 naar beneden */
+        left: 69%; /* Verplaats orb 2 naar het midden */
+    }
+
+    .orb3 {
+        width: 280px; /* Gebruik viewport breedte voor schaal */
+        height: 280px; /* Gebruik viewport breedte voor schaal */
+        top: 13%; /* Verplaats orb 3 naar beneden */
+        left: 15%;  /* Plaatst de derde orb in de derde kolom */
+    }
+
+}
+
+/* 
+------------------------------------------------------
+------------------------SECTION 2---------------------
+------------------------------------------------------ */
 
 section:nth-of-type(2) {
     background-image: linear-gradient(#A198F5, #E7D4F8);
     display: flex;
-    height: 64vh;
     flex-direction: column; 
+    justify-items: center;
+    align-items: center;
+    gap: 2em;
 }
 
 
@@ -184,8 +288,7 @@ section:nth-of-type(2) > h1 , p{
 
 
 section:nth-of-type(2) > h1 {
-    margin-top: 1.3em;
-    margin-bottom: 5%;
+margin-top: 1em;
     font-family: var(--font-primary);
     font-size: 2.9em;
     font-weight: 300;
@@ -193,28 +296,26 @@ section:nth-of-type(2) > h1 {
 
 section:nth-of-type(2) > p {
     font-family: var(--font-secondary);
-    margin: 0px 10%;
-    line-height: 130%;
+    max-width: 800px;
+    width: 80vw;
+    line-height: 150%;
 }
 
 section:nth-of-type(2) > div {
     display: flex;
     flex-direction: column;
     /* background-color: aquamarine; */
-    justify-content: center;
+    /* justify-content: baseline; */
+    align-items: center;
     gap: 1.3em;
-    margin-top: 2em;
+    margin-bottom: 4em;
 
 }
 
 section:nth-of-type(2) > div a {
     padding: 15px 15px;
-
-    margin: 0 5em;
     background-color: var(--color-white);
     color: var(--color-black);
-    border: none;
-    cursor: pointer;
     font-size: 1rem;
     border-radius: 100px;
     font-family: var(--font-secondary);
@@ -226,11 +327,14 @@ section:nth-of-type(2) > div a {
 section:nth-of-type(2) > div a:first-of-type {
     background-color: transparent;
     border: 1.5px solid black;
+    width: 200px;
 }
 
 section:nth-of-type(2) > div a:nth-of-type(2) {
     background-color: var(--color-black);
     color: white;
+    width: 150px;
+
 }
 
 @media screen and (min-width: 1024px) {
@@ -238,11 +342,184 @@ section:nth-of-type(2) > div a:nth-of-type(2) {
         flex-direction: row; /* Zet de knoppen naast elkaar */
         justify-content: center; /* Centreert de knoppen */
         align-items: center; /* Zorgt dat ze netjes uitgelijnd zijn */
-        gap: 2em; /* Ruimte tussen de knoppen */
+        gap: 1em; /* Ruimte tussen de knoppen */
     }
 
     section:nth-of-type(2) > div a {
         margin: 0; /* Reset de margin zodat ze niet te veel uitlopen */
         padding: 15px 20px; /* Zorgt voor gelijke knoppen */
-    }
+
+}}
+
+/* 
+------------------------------------------------------
+------------------------SECTION 3---------------------
+------------------------------------------------------ */
+
+section:nth-of-type(3) {
+    background: white;
+    border-radius: 40px 40px 0 0 ;
+    height: 650px;
+    display: grid;
+    grid-template-rows: 550px 100px;
+    grid-template-columns: 1fr 30px 30px 30px 30px 30px 1fr;
+    align-items: center;
+    justify-items: center;
+    font-family: var(--font-secondary);
+    position: relative; /* Dit zorgt ervoor dat de absolute positionering van h1 relatief is aan section 3 */
+    background: white;
+}
+
+section:nth-of-type(3) > div article img {
+    width: 300px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+   
+}
+
+section:nth-of-type(3) > div article h3 {
+    margin: 2px;
+    color: var(--color-white);
+    font-family: var(--font-primary);
+    font-weight: 300;
+    margin: 30px 30px 20px 30px ;
+    text-align: left;
+    font-size: 1.5em;
+}
+
+section:nth-of-type(3) > div article p {
+ color: #FFFFFF;
+ font-family: var(--font-secondary);
+ font-size: 0.9em;
+ font-weight: 300;
+ line-height: 120%;
+ margin: 0 30px;
+ text-align: left;
+}
+
+#carousel {
+    grid-row: 1 /2;
+    grid-column: 1 / 8;
+    width: 100vw;
+    height:650px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transform-style: preserve-3d;
+    perspective: 600px;
+    --items: 5;
+    --middle: 3;
+    --position: 1;
+    pointer-events: none;
+}
+
+section:nth-of-type(3) > div article {
+    text-align: center;
+    /* border: 1px solid black; */
+    border-radius: 20px;
+    margin-top: 10em;
+    margin-bottom: 1em;
+    position: absolute;
+    width: 300px;
+    height: 400px;
+    background-color: var(--color-black);
+    --r: calc(var(--position) - var(--offset));
+    --abs: max(calc(var(--r) * -1), var(--r));
+    transition: all 0.25s linear;
+    transform: rotateY(calc(-10deg * var(--r)))
+    translateX(calc(-300px * var(--r)));
+    z-index: calc((var(--position) - var(--abs)));
+
+
+}
+
+
+section:nth-of-type(3) > div article:nth-of-type(1){
+    --offset: 1;
+}
+section:nth-of-type(3) > div article:nth-of-type(2){
+    --offset: 2;
+}
+section:nth-of-type(3) > div article:nth-of-type(3){
+    --offset: 3;
+}
+section:nth-of-type(3) > div article:nth-of-type(4){
+    --offset: 4;
+}
+section:nth-of-type(3) > div article:nth-of-type(5){
+    --offset: 5;
+}
+
+div.item:nth-of-type(1) {
+    --offset: 1;
+}
+div.item:nth-of-type(2) {
+    --offset: 2;
+}
+div.item:nth-of-type(3) {
+    --offset: 3;
+}
+div.item:nth-of-type(4) {
+    --offset: 4;
+}
+div.item:nth-of-type(5) {
+    --offset: 5;
+}
+
+input:nth-of-type(1) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+input:nth-of-type(1):checked ~ #carousel {
+    --position: 1;
+}
+
+input:nth-of-type(2) {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+input:nth-of-type(2):checked ~ #carousel {
+    --position: 2;
+}
+
+input:nth-of-type(3) {
+    grid-column: 4 /5;
+    grid-row: 2 / 3;
+}
+input:nth-of-type(3):checked ~ #carousel {
+    --position: 3;
+}
+
+input:nth-of-type(4) {
+    grid-column: 5 / 6;
+    grid-row: 2 / 3;
+}
+input:nth-of-type(4):checked ~ #carousel {
+    --position: 4;
+}
+
+input:nth-of-type(5) {
+    grid-column: 6 / 7;
+    grid-row: 2 / 3;
+}
+input:nth-of-type(5):checked ~ #carousel {
+    --position: 5;
+}
+
+
+section:nth-of-type(3) h1 {
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    text-align: center;
+    width: 100%;
+    font-family: var(--color-primary);
+    font-family: var(--font-primary);
+    font-size: 1.9em;
+    font-weight: 300;
 }

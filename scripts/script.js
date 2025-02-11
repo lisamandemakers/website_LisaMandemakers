@@ -4,3 +4,5 @@ function scrollToNextSection() {
         behavior: "smooth"
     });
 }
+
+// chat GPT ^
