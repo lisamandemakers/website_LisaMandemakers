@@ -1,3 +1,5 @@
+
+// Functie voor de scroll naar beneden knop
 function scrollToNextSection() {
     window.scrollBy({
         top: window.innerHeight,
@@ -6,6 +8,9 @@ function scrollToNextSection() {
 }
 
 
+
+// -- BRON: Video color picker:
+// COLOR PICKER VOOR DE ORBS & SECTION 2
 window.addEventListener("load", () => {
 
     const colorItems = document.querySelectorAll('.color-item');
@@ -51,23 +56,33 @@ window.addEventListener("load", () => {
 
 });
 
-// chat GPT ^
 
+
+
+// -- BRON: chat GPT
+// -- BRON: workshop: API'S voor beginners
 const baseURL = 'https://fdnd.directus.app/';
 const endpointMe = 'items/person/212';
 
 // Combineer de base URL en endpoint om de volledige URL te maken
 const myURL = baseURL + endpointMe;
 
-// Gebruik fetch om data op te halen
-fetch(myURL)
-  .then(response => {
-    // Controleer of de response succesvol is
-    if (!response.ok) {
-      throw new Error('Netwerk antwoord was niet ok');
-    }
-    return response.json(); // Converteer de response naar JSON
-  })
+
+// ASYNCHRONE FUNCTIE VOOR HET OPHALEN VAN DATA UIT DE API 
+async /*9*/ function getData(URL) {
+	return ( //8
+		fetch(URL) //1
+		.then ( //2
+			response /*3*/ => response.json() //4
+		)
+		.then ( //5
+			jsonData /*6*/ => {return jsonData} //7
+		)
+	);
+}
+
+// MIJN NAAM UIT DE API
+getData(myURL)
   .then(data212 => {
     // Haal het h1-element uit de HTML
     let deH1 = document.querySelector("h1");
@@ -78,7 +93,7 @@ fetch(myURL)
     // Split de naam in woorden
     let nameParts = myName.split(" ");
 
-    // Maak een br element aan voor de lijn breuk
+    // Maak een br element aan voor de lijnbreuk
     let brElement = document.createElement('br');
 
     // Maak een span element aan voor het tweede woord
@@ -102,15 +117,48 @@ fetch(myURL)
 
     // Controleer de naam in de console
     console.log(myName);
-  })
-  .catch(error => {
-    // Foutafhandeling voor eventuele problemen
-    console.error('Er is een fout opgetreden:', error);
   });
 
 
+  // MIJN BIO UIT DE API
+  getData(myURL)
+  .then(data212 => {
+    let deEersteP =  document.querySelector("p");
+    let myBio = data212.data.bio;
+    deEersteP.textContent =  myBio;
+  });
 
 
+ // MEER OVER MIJ > CUSTOM FIELD JSON
+  getData(myURL)
+  .then(data212 => {
+    // Parse de custom string
+    let JsonCustom = JSON.parse(data212.data.custom);
+    let woonplaats = JsonCustom.woonplaats;
+    let vijfdeH3 = document.querySelectorAll("article h3")[4]; 
+    vijfdeH3.innerHTML = woonplaats; 
+
+    let sport = JsonCustom.sport;
+    let eersteH3 = document.querySelectorAll("article h3")[0]; 
+    eersteH3.innerHTML = sport; 
+
+    let hobby = JsonCustom.hobby;
+    let tweedeH3 = document.querySelectorAll("article h3")[1]; 
+    tweedeH3.innerHTML = hobby; 
+
+    let interesse = JsonCustom.interesse;
+    let derdeH3 = document.querySelectorAll("article h3")[2]; 
+    derdeH3.innerHTML = interesse; 
+
+    let gekOp = JsonCustom.gekop;
+    let vierdeH3 = document.querySelectorAll("article h3")[3]; 
+    vierdeH3.innerHTML = gekOp; 
+});
+
+ 
+
+// LEERDOELEN MEER UITLEG KNOPPEN
+// -- BRON: chat gpt en Kim mijn klas genoot
   const readMoreButtons = document.querySelectorAll('.read-more');
   const closeButtons = document.querySelectorAll('.close-dialog');
   
