@@ -13,16 +13,12 @@
     --color-black: #131313; /* Donker */
     --color-primary: #A198F5; /* Basis paars */
     --color-light-purple: #E7D4F8; /* Licht paars */
-    
-    /* Marges en padding */
-    --spacing-small: 0.5em; /* 8px */
-    --spacing-medium: 1em; /* 16px */
-    --spacing-large: 2em; /* 32px */
 }
 
 * {
     margin: 0;
 }
+
 
 body {
     display: flex;
@@ -35,7 +31,7 @@ body {
 ------------------------------------------------------
 ------------------------nav---------------------
 ------------------------------------------------------ */
-
+/* BRON COLORPICKER: https://www.youtube.com/watch?v=m-z3xQL9rzU&list=PLFPAxDD3icirSnt2ZE9LdSWnnj1oqsmN-&index=3  */
 
 nav {
     background-color: #fff;
@@ -234,6 +230,7 @@ section:first-of-type > div:last-of-type {
 }
 
 
+/* BRON ORB CODE: https://vm.tiktok.com/ZNd18Tsjw/ */
 /* orb */
 .orb {
     animation: spin 2s linear infinite;
@@ -474,6 +471,8 @@ section:nth-of-type(2) > div a:nth-of-type(2) {
 ------------------------SECTION 3---------------------
 ------------------------------------------------------ */
 
+/* BRON CODE CAROUSEL: https://www.youtube.com/watch?v=eLHSFxF0Z4U&t=709s */
+
 section:nth-of-type(3) {
     background: white;
     border-radius: 50px 50px 0 0 ;
@@ -698,8 +697,6 @@ section:nth-of-type(4) h1 {
     
 }
 
-
-
 .block {
     width: 300px; 
     width: 300px;  /* Two blocks per row with gap */
@@ -876,4 +873,3 @@ dialog[open] {
     
 
 
-/* section 5 */

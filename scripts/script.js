@@ -1,4 +1,5 @@
 
+// -- BRON:chat gpt
 // Functie voor de scroll naar beneden knop
 function scrollToNextSection() {
     window.scrollBy({
@@ -9,7 +10,7 @@ function scrollToNextSection() {
 
 
 
-// -- BRON: Video color picker:
+// -- BRON: Video color picker:https://www.youtube.com/watch?v=m-z3xQL9rzU&list=PLFPAxDD3icirSnt2ZE9LdSWnnj1oqsmN-&index=3
 // COLOR PICKER VOOR DE ORBS & SECTION 2
 window.addEventListener("load", () => {
 
