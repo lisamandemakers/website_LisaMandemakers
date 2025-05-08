@@ -16,7 +16,8 @@ window.addEventListener("load", () => {
 
     const colorItems = document.querySelectorAll('.color-item');
     const orbs = document.querySelectorAll('.orb'); // Selecteer alle orbs
-    const section = document.querySelector('section:nth-of-type(2)'); // Selecteer de specifieke sectie
+    const section = document.querySelector('.text-section');
+    const sectionBottom = document.querySelector('.text-section-bottom'); // Selecteer de specifieke sectie
 
     colorItems.forEach(item => {
         item.addEventListener('click', function() {
@@ -33,23 +34,28 @@ window.addEventListener("load", () => {
                 if (idSelected === "purple") {
                     orb.style.boxShadow = `inset 0 0 50px #fff, inset 60px 0 120px violet, inset -30px 0 60px blue, inset 60px 0 900px violet, inset -60px 0 900px blue, 0 0 150px #fff, -30px 0 120px violet, 30px 0 120px blue`;
                     orb.style.animation = "spin 3s linear infinite";
-                    section.style.background = "linear-gradient(#A198F5, #E7D4F8)"; // Gradient voor paars
+                    section.style.background = "linear-gradient(#A198F5, #E7D4F8)";
+                    sectionBottom.style.background = "linear-gradient(#A198F5, #E7D4F8)"; // Gradient voor paars
                 } else if (idSelected === "yellow") {
                     orb.style.boxShadow = `inset 0 0 50px #fff, inset 60px 0 120px orange, inset -30px 0 60px yellow, inset 60px 0 900px orange, inset -60px 0 900px yellow, 0 0 150px #fff, -30px 0 120px orange, 30px 0 120px yellow`;
                     orb.style.animation = "spin 3s linear infinite";
-                    section.style.background = "linear-gradient(#FFF2A5,rgb(255, 250, 216))"; // Gradient voor geel
+                    section.style.background = "linear-gradient(#FFF2A5,rgb(255, 250, 216))";
+                    sectionBottom.style.background = "linear-gradient(#FFF2A5,rgb(255, 250, 216))"; // Gradient voor geel
                 } else if (idSelected === "green") {
                     orb.style.boxShadow = `inset 0 0 50px #fff, inset 60px 0 120px limegreen, inset -30px 0 60px green, inset 60px 0 900px limegreen, inset -60px 0 900px green, 0 0 150px #fff, -30px 0 120px limegreen, 30px 0 120px green`;
                     orb.style.animation = "spin 3.2s linear infinite";
-                    section.style.background = "linear-gradient(#A8D08D,rgb(219, 250, 214))"; // Gradient voor groen
+                    section.style.background = "linear-gradient(#A8D08D,rgb(219, 250, 214))";
+                    sectionBottom.style.background = "linear-gradient(#A8D08D,rgb(219, 250, 214))"; // Gradient voor groen
                 } else if (idSelected === "blue") {
                     orb.style.boxShadow = `inset 0 0 50px #fff, inset 60px 0 120px cyan, inset -30px 0 60px blue, inset 60px 0 900px cyan, inset -60px 0 900px blue, 0 0 150px #fff, -30px 0 120px cyan, 30px 0 120px blue`;
                     orb.style.animation = "spin 2.8s linear infinite";
-                    section.style.background = "linear-gradient(#6FA3D9,rgb(203, 226, 250))"; // Gradient voor blauw
+                    section.style.background = "linear-gradient(#6FA3D9,rgb(203, 226, 250))";
+                    sectionBottom.style.background = "linear-gradient(#6FA3D9,rgb(203, 226, 250))"; // Gradient voor blauw
                 } else if (idSelected === "pink") {
                     orb.style.boxShadow = `inset 0 0 50px #fff, inset 60px 0 120px pink, inset -30px 0 60px hotpink, inset 60px 0 900px pink, inset -60px 0 900px hotpink, 0 0 150px #fff, -30px 0 120px pink, 30px 0 120px hotpink`;
                     orb.style.animation = "spin 3.5s linear infinite";
-                    section.style.background = "linear-gradient(#F9A8D4,rgb(252, 223, 240))"; // Gradient voor roze
+                    section.style.background = "linear-gradient(#F9A8D4,rgb(252, 223, 240))"; 
+                    sectionBottom.style.background = "linear-gradient(#F9A8D4,rgb(252, 223, 240))";
                 }
             });
         });
@@ -177,3 +183,57 @@ getData(myURL)
     });
   });
   
+
+
+
+// 
+
+// === CAROUSEL ===
+const track = document.querySelector('.carousel-track');
+const leftBtn = document.querySelector('.carousel-btn.left');
+const rightBtn = document.querySelector('.carousel-btn.right');
+const cards = document.querySelectorAll('.carousel-card');
+
+let currentIndex = 0;
+const cardsToShow = 4;
+
+function updateCarousel() {
+  const cardWidth = cards[0].offsetWidth;
+  const totalCards = cards.length;
+  const maxIndex = totalCards - cardsToShow;
+  if (currentIndex < 0) currentIndex = 0;
+  if (currentIndex > maxIndex) currentIndex = maxIndex;
+
+  track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+}
+
+leftBtn.addEventListener('click', () => {
+  currentIndex--;
+  updateCarousel();
+});
+
+rightBtn.addEventListener('click', () => {
+  currentIndex++;
+  updateCarousel();
+});
+
+// Zorg dat alles opnieuw wordt berekend bij resize
+window.addEventListener('resize', updateCarousel);
+
+// === FAQ switch bij klikken op carousel ===
+const faqSections = document.querySelectorAll('.faq-section');
+const carouselCards = document.querySelectorAll('.carousel-card');
+
+carouselCards.forEach((card, index) => {
+  card.addEventListener('click', () => {
+    faqSections.forEach(section => {
+      section.classList.remove('active');
+    });
+
+    const sectionToShow = document.querySelector(`.faq-section[data-faq="${index + 1}"]`);
+    if (sectionToShow) {
+      sectionToShow.classList.add('active');
+      sectionToShow.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});

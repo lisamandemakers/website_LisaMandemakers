@@ -7,6 +7,7 @@
     <title>Personal website Lisa</title>
     <link rel="icon" href="assets/littlelogo.png" type="image/x-icon">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/horizontal-slider.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -34,23 +35,23 @@
     </nav>
 
     <main>
-        <section>
-            <div>
+        <section class="hero-section">
+            <div class="text-hero-container">
                 <h1></h1>
                 <h2>Website from scratch for school</h2>
                 <button onclick="scrollToNextSection()">↓</button>
             </div>
-            <div>
+            <div class="orb-hero-container">
                 <div class="orb orb1"></div>
                 <div class="orb orb2"></div>
                 <div class="orb orb3"></div>
             </div>
         </section>
 
-        <section>
+        <section class="text-section">
             <h1>UX <span>designer</span></h1>
             <p></p>
-            <div>
+            <div class="btn-container">
                 <a href="https://lisamandemakers.wixstudio.com/portfoliolisa">Bekijk portfolio van Lisa</a>
                 <a href="https://github.com/lisamandemakers">Bekijk Github</a>
             </div>
@@ -185,7 +186,110 @@
                 </div>
             </div>
         </section>
-    </main>
-    <script src="scripts/script.js"></script>
+        <section class="text-section-bottom">
+            <div class="text-container">
+            <h2>Hackaton <span>Reflectie</span></h2>
+            <p>Samenwerken is een essentiële vaardigheid in elk project, vooral in de creatieve en
+                technische industrie. Ik wil mijn samenwerkingstechnieken verbeteren om effectiever te
+                communiceren met anderen, zowel in groepsprojecten als in professionele settings. Het leren
+                omgaan met verschillende perspectieven en het combineren van ideeën zal niet alleen mijn
+                persoonlijke groei bevorderen, maar ook het succes van de projecten waar ik aan werk.</p>
+            </div>
+            <div class="image-container">
+                <img src="assets/laptoppng.png" alt="laptop mockup">
+            </div>
+        </section>
+         
+<section class="weekly-nerd">
+    <!-- CAROUSEL -->
+    <section class="carousel-section">
+      <button class="carousel-btn left">&#10094;</button>
+      <div class="carousel-container">
+        <h2>Weekly <span>Nerd</span></h2>
+        <div class="carousel-track">
+          <div class="carousel-card">
+            <h2>Nerd 1</h2>
+            <p>Subtitel 1</p>
+          </div>
+          <div class="carousel-card">
+            <h2>Nerd 2</h2>
+            <p>Subtitel 2</p>
+          </div>
+          <div class="carousel-card">
+            <h2>Nerd 3</h2>
+            <p>Subtitel 3</p>
+          </div>
+          <div class="carousel-card">
+            <h2>Nerd 4</h2>
+            <p>Subtitel 4</p>
+          </div>
+          <div class="carousel-card">
+            <h2>Nerd 5</h2>
+            <p>Subtitel 5</p>
+          </div>
+          <div class="carousel-card">
+            <h2>Nerd 6</h2>
+            <p>Subtitel 6</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn right">&#10095;</button>
+    </section>
+  
+    <!-- FAQ WRAPPER -->
+  <section class="faq-wrapper">
+    <div class="faq-section" data-faq="1">
+      <h2>FAQ voor Titel 1</h2>
+      
+      <details class="faq-item">
+        <summary>
+          <span class="question-text">Wat is dit?</span>
+          <span class="icon">+</span>
+        </summary>
+        <p>Dit is het antwoord op vraag 1 van Titel 1.</p>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="question-text">Hoe werkt het?</span>
+          <span class="icon">+</span>
+        </summary>
+        <p>Dit is het antwoord op vraag 2 van Titel 1.</p>
+      </details>
+      <details class="faq-item">
+        <summary>
+          <span class="question-text">Hoe werkt het?</span>
+          <span class="icon">+</span>
+        </summary>
+        <p>Dit is het antwoord op vraag 2 van Titel 1.</p>
+      </details>
+    </div>
+  
+    <div class="faq-section" data-faq="2">
+      <h1>FAQ voor Titel 2</h1>
+      
+      <details class="faq-item">
+        <summary>
+          <span class="question-text">Hoe werkt het?</span>
+          <span class="icon">+</span>
+        </summary>
+        <p>Dit is het antwoord op vraag 1 van Titel 2.</p>
+      </details>
+    </div>
+  </section>
+
+</section>
+
+
+<!-- GSAP Core (moet als eerste) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
+<!-- ScrollTrigger plugin (na GSAP core) -->
+<script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+
+<!-- Locomotive Scroll (als derde) -->
+<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
+
+<!-- Jouw eigen script (als laatste, want deze gebruikt bovenstaande libraries) -->
+<script src="scripts/script.js"></script>
 </body>
 </html>
