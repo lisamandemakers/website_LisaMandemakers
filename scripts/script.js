@@ -226,6 +226,13 @@ const carouselCards = document.querySelectorAll('.carousel-card');
 
 carouselCards.forEach((card, index) => {
   card.addEventListener('click', () => {
+    // Verwijder actieve klasse van alle kaarten
+    carouselCards.forEach(c => c.classList.remove('active'));
+    
+    // Voeg actieve klasse toe aan de aangeklikte kaart
+    card.classList.add('active');
+
+    // FAQ-secties wisselen
     faqSections.forEach(section => {
       section.classList.remove('active');
     });
@@ -233,7 +240,49 @@ carouselCards.forEach((card, index) => {
     const sectionToShow = document.querySelector(`.faq-section[data-faq="${index + 1}"]`);
     if (sectionToShow) {
       sectionToShow.classList.add('active');
-      sectionToShow.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+  });
+});
+
+
+
+// Smooth black cursor
+const cursorDot = document.createElement('div');
+cursorDot.classList.add('cursor-dot');
+document.body.appendChild(cursorDot);
+
+let mouseX = 0;
+let mouseY = 0;
+
+document.addEventListener('mousemove', (e) => {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+});
+
+// Smooth animation loop
+function animateCursor() {
+  const currentX = parseFloat(cursorDot.style.left) || 0;
+  const currentY = parseFloat(cursorDot.style.top) || 0;
+
+  // Interpolatie voor smooth effect
+  const newX = currentX + (mouseX - currentX) * 0.2;
+  const newY = currentY + (mouseY - currentY) * 0.2;
+
+  cursorDot.style.left = `${newX}px`;
+  cursorDot.style.top = `${newY}px`;
+
+  requestAnimationFrame(animateCursor);
+}
+
+animateCursor();
+
+const hoverTargets = document.querySelectorAll('.carousel-card'); // of andere selectors
+
+hoverTargets.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursorDot.classList.add('hovering');
+  });
+  el.addEventListener('mouseleave', () => {
+    cursorDot.classList.remove('hovering');
   });
 });

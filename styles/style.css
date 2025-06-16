@@ -1129,25 +1129,35 @@ h2 {
     transition: transform 0.5s ease;
     gap: 20px;
     margin-top: 2em;
+        padding: 0 2rem ;
 }
 
 .carousel-card {
     flex: 0 0 25%;
     box-sizing: border-box;
-    padding: 1rem;
+    padding: 2rem;
     text-align: center;
     border-right: 1px solid #ffffff22;
     border: 1px solid;
     cursor: pointer;
     transition: 0.1s ease-in;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    border-radius: 20px;
 }
 
-.carousel-card:hover {
-    scale: 1.1;
+.carousel-card:hover,
+.carousel-card.active {
+    background-color: var(--color-light-purple);
+    scale: 1.05;
 }
 
 .carousel-card h2 {
-    font-size: 1.2rem;
+    text-transform: uppercase;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
     text-align: center;
     font-family: var(--font-primary);
@@ -1156,7 +1166,6 @@ h2 {
 
 .carousel-card p {
     font-size: 0.95rem;
-    color: #cccccc;
 }
 
 .carousel-btn {
@@ -1183,7 +1192,12 @@ h2 {
 }
 
 /* FAQ styles komen hier onder zoals eerder */
+.weekly-nerd {
+    height: 2000px;
+    display: flex;
+    justify-content: start;
 
+}
 
 .faq-wrapper  {
     display: block;
@@ -1282,3 +1296,23 @@ details[open] p {
     }
 }
 
+
+/* cursor */
+.cursor-dot {
+  width: 10px;
+  height: 10px;
+  background-color: black;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s ease-out;
+  transition: width 0.2s ease, height 0.2s ease, background-color 0.2s ease;
+}
+
+.cursor-dot.hovering {
+  width: 30px;
+  height: 30px;
+
+}
