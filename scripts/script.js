@@ -189,6 +189,7 @@ getData(myURL)
 // 
 
 // === CAROUSEL ===
+// === CAROUSEL ===
 const track = document.querySelector('.carousel-track');
 const leftBtn = document.querySelector('.carousel-btn.left');
 const rightBtn = document.querySelector('.carousel-btn.right');
@@ -224,13 +225,23 @@ window.addEventListener('resize', updateCarousel);
 const faqSections = document.querySelectorAll('.faq-section');
 const carouselCards = document.querySelectorAll('.carousel-card');
 
+// Zet de eerste kaart en FAQ sectie standaard actief bij laden
+if (carouselCards.length > 0) {
+  carouselCards[0].classList.add('active');
+}
+if (faqSections.length > 0) {
+  faqSections[0].classList.add('active');
+}
+
 carouselCards.forEach((card, index) => {
-  card.addEventListener('click', () => {
+  card.addEventListener('click', (e) => {
     // Verwijder actieve klasse van alle kaarten
     carouselCards.forEach(c => c.classList.remove('active'));
-    
     // Voeg actieve klasse toe aan de aangeklikte kaart
     card.classList.add('active');
+
+    // Confetti effect op klikpositie
+    spawnConfetti(e.clientX, e.clientY);
 
     // FAQ-secties wisselen
     faqSections.forEach(section => {
@@ -244,13 +255,46 @@ carouselCards.forEach((card, index) => {
   });
 });
 
+function spawnConfetti(x, y, count = 12) {
+  for (let i = 0; i < count; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('confetti-dot');
+
+    const angle = Math.random() * 2 * Math.PI;
+    const distance = 60 + Math.random() * 40;
+
+    const xOffset = Math.cos(angle) * distance;
+    const yOffset = Math.sin(angle) * distance;
+
+    dot.style.left = `${x}px`;
+    dot.style.top = `${y}px`;
+    dot.style.setProperty('--x', `${xOffset}px`);
+    dot.style.setProperty('--y', `${yOffset}px`);
+
+    document.body.appendChild(dot);
+
+    // Verwijder dot na animatie
+    setTimeout(() => {
+      dot.remove();
+    }, 800);
+  }
+}
+
+
 
 
 // Smooth black cursor
+// Maak cursor-div en tekst-span aan
 const cursorDot = document.createElement('div');
 cursorDot.classList.add('cursor-dot');
+
+const cursorText = document.createElement('span');
+cursorText.textContent = 'View me';
+cursorDot.appendChild(cursorText);
+
 document.body.appendChild(cursorDot);
 
+// Coördinaten volgen
 let mouseX = 0;
 let mouseY = 0;
 
@@ -259,12 +303,11 @@ document.addEventListener('mousemove', (e) => {
   mouseY = e.clientY;
 });
 
-// Smooth animation loop
+// Animatielus voor smooth beweging
 function animateCursor() {
   const currentX = parseFloat(cursorDot.style.left) || 0;
   const currentY = parseFloat(cursorDot.style.top) || 0;
 
-  // Interpolatie voor smooth effect
   const newX = currentX + (mouseX - currentX) * 0.2;
   const newY = currentY + (mouseY - currentY) * 0.2;
 
@@ -276,7 +319,8 @@ function animateCursor() {
 
 animateCursor();
 
-const hoverTargets = document.querySelectorAll('.carousel-card'); // of andere selectors
+// Hover op specifieke elementen
+const hoverTargets = document.querySelectorAll('.carousel-card');
 
 hoverTargets.forEach(el => {
   el.addEventListener('mouseenter', () => {
@@ -286,3 +330,86 @@ hoverTargets.forEach(el => {
     cursorDot.classList.remove('hovering');
   });
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+gsap.registerPlugin(ScrollTrigger);
+const contents = gsap.utils.toArray("#scrollContainer .content");
+const scrollImages = document.querySelector(".scroll-items");
+const textItems = document.querySelector(".textItems");
+
+// Scroll animatie voor de content-secties
+gsap.to(contents, {
+  xPercent: -100 * (contents.length - 1),
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#scrollContainer",
+    pin: true,
+    scrub: 0.5,
+    snap: {
+      snapTo: gsap.utils.snap(1 / (contents.length - 1)), // snap per sectie
+      duration: 0.15,
+      ease: "power1.inOut"
+    }
+  }
+});
+
+// scroll de voorste foto's horizontaal
+gsap.to(scrollImages, {
+  x: 0,
+  ease: "none",
+  scrollTrigger: {
+    trigger: "#scrollContainer",
+    start: "top top",
+    end: "bottom -0%",
+    scrub: true,
+  }
+});
+
+// scroll de tekst
+gsap.to(textItems, {
+    y: -480,
+    ease: "none",
+    scrollTrigger: {
+      trigger: "#scrollContainer",
+      start: "top top",
+      end: "bottom -0%",
+      scrub: true,
+    }
+  });
+
+ScrollTrigger.create({
+    trigger: "#scrollContainer",
+    start: "top 25%",
+    end: "bottom -10%",
+    onEnter: () => gsap.to("#imgScrollContainer", {opacity: 1, height: 500, duration: 0.3}),
+    onLeave: () => gsap.to("#imgScrollContainer", {opacity: 0, height: 0, duration: 0.3}),
+    onEnterBack: () => gsap.to("#imgScrollContainer", {opacity: 1, height: 500, duration: 0.3}),
+    onLeaveBack: () => gsap.to("#imgScrollContainer", {opacity: 0, height: 0, duration: 0.3}),
+  });
+
+
+  ScrollTrigger.create({
+    trigger: "#scrollContainer",
+    start: "top 25%",
+    end: "bottom -10%",
+    onEnter: () => gsap.to("#textScrollContainer", {opacity: 1, duration: 0.3}),
+    onLeave: () => gsap.to("#textScrollContainer", {opacity: 0, duration: 0.3}),
+    onEnterBack: () => gsap.to("#textScrollContainer", {opacity: 1, duration: 0.3}),
+    onLeaveBack: () => gsap.to("#textScrollContainer", {opacity: 0, duration: 0.3}),
+  });
