@@ -348,68 +348,106 @@ hoverTargets.forEach(el => {
 
 
 
-gsap.registerPlugin(ScrollTrigger);
-const contents = gsap.utils.toArray("#scrollContainer .content");
-const scrollImages = document.querySelector(".scroll-items");
-const textItems = document.querySelector(".textItems");
+// gsap.registerPlugin(ScrollTrigger);
+// const contents = gsap.utils.toArray("#scrollContainer .content");
+// const scrollImages = document.querySelector(".scroll-items");
+// const textItems = document.querySelector(".textItems");
 
-// Scroll animatie voor de content-secties
-gsap.to(contents, {
-  xPercent: -100 * (contents.length - 1),
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#scrollContainer",
-    pin: true,
-    scrub: 0.5,
-    snap: {
-      snapTo: gsap.utils.snap(1 / (contents.length - 1)), // snap per sectie
-      duration: 0.15,
-      ease: "power1.inOut"
-    }
+// // Scroll animatie voor de content-secties
+// gsap.to(contents, {
+//   xPercent: -100 * (contents.length - 1),
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: "#scrollContainer",
+//     pin: true,
+//     scrub: 0.5,
+//     snap: {
+//       snapTo: gsap.utils.snap(1 / (contents.length - 1)), // snap per sectie
+//       duration: 0.15,
+//       ease: "power1.inOut"
+//     }
+//   }
+// });
+
+// // scroll de voorste foto's horizontaal
+// gsap.to(scrollImages, {
+//   x: 0,
+//   ease: "none",
+//   scrollTrigger: {
+//     trigger: "#scrollContainer",
+//     start: "top top",
+//     end: "bottom -0%",
+//     scrub: true,
+//   }
+// });
+
+// // scroll de tekst
+// gsap.to(textItems, {
+//     y: -480,
+//     ease: "none",
+//     scrollTrigger: {
+//       trigger: "#scrollContainer",
+//       start: "top top",
+//       end: "bottom -0%",
+//       scrub: true,
+//     }
+//   });
+
+// ScrollTrigger.create({
+//     trigger: "#scrollContainer",
+//     start: "top 25%",
+//     end: "bottom -10%",
+//     onEnter: () => gsap.to("#imgScrollContainer", {opacity: 1, height: 500, duration: 0.3}),
+//     onLeave: () => gsap.to("#imgScrollContainer", {opacity: 0, height: 0, duration: 0.3}),
+//     onEnterBack: () => gsap.to("#imgScrollContainer", {opacity: 1, height: 500, duration: 0.3}),
+//     onLeaveBack: () => gsap.to("#imgScrollContainer", {opacity: 0, height: 0, duration: 0.3}),
+//   });
+
+
+//   ScrollTrigger.create({
+//     trigger: "#scrollContainer",
+//     start: "top 25%",
+//     end: "bottom -10%",
+//     onEnter: () => gsap.to("#textScrollContainer", {opacity: 1, duration: 0.3}),
+//     onLeave: () => gsap.to("#textScrollContainer", {opacity: 0, duration: 0.3}),
+//     onEnterBack: () => gsap.to("#textScrollContainer", {opacity: 1, duration: 0.3}),
+//     onLeaveBack: () => gsap.to("#textScrollContainer", {opacity: 0, duration: 0.3}),
+//   });
+
+
+
+const colorThemes = {
+  purple: {
+    primary: '#A198F5',
+    light: '#E7D4F8'
+  },
+  pink: {
+    primary: '#F9A8D4',
+    light: 'rgb(252, 223, 240)'
+  },
+  blue: {
+    primary: '#6FA3D9',
+    light: 'rgb(203, 226, 250)'
+  },
+  green: {
+    primary: '#A8D08D',
+    light: 'rgb(219, 250, 214)'
+  },
+  yellow: {
+    primary: '#FFF2A5',
+    light: 'rgb(255, 250, 216)'
   }
-});
+};
 
-// scroll de voorste foto's horizontaal
-gsap.to(scrollImages, {
-  x: 0,
-  ease: "none",
-  scrollTrigger: {
-    trigger: "#scrollContainer",
-    start: "top top",
-    end: "bottom -0%",
-    scrub: true,
-  }
-});
+  document.querySelectorAll('.color-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const color = item.id;
+      const theme = colorThemes[color];
 
-// scroll de tekst
-gsap.to(textItems, {
-    y: -480,
-    ease: "none",
-    scrollTrigger: {
-      trigger: "#scrollContainer",
-      start: "top top",
-      end: "bottom -0%",
-      scrub: true,
-    }
+      if (theme) {
+        document.documentElement.style.setProperty('--color-primary', theme.primary);
+        document.documentElement.style.setProperty('--color-light-purple', theme.light);
+      }
+    });
   });
 
-ScrollTrigger.create({
-    trigger: "#scrollContainer",
-    start: "top 25%",
-    end: "bottom -10%",
-    onEnter: () => gsap.to("#imgScrollContainer", {opacity: 1, height: 500, duration: 0.3}),
-    onLeave: () => gsap.to("#imgScrollContainer", {opacity: 0, height: 0, duration: 0.3}),
-    onEnterBack: () => gsap.to("#imgScrollContainer", {opacity: 1, height: 500, duration: 0.3}),
-    onLeaveBack: () => gsap.to("#imgScrollContainer", {opacity: 0, height: 0, duration: 0.3}),
-  });
-
-
-  ScrollTrigger.create({
-    trigger: "#scrollContainer",
-    start: "top 25%",
-    end: "bottom -10%",
-    onEnter: () => gsap.to("#textScrollContainer", {opacity: 1, duration: 0.3}),
-    onLeave: () => gsap.to("#textScrollContainer", {opacity: 0, duration: 0.3}),
-    onEnterBack: () => gsap.to("#textScrollContainer", {opacity: 1, duration: 0.3}),
-    onLeaveBack: () => gsap.to("#textScrollContainer", {opacity: 0, duration: 0.3}),
-  });

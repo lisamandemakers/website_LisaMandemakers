@@ -33,7 +33,7 @@ body {
     align-items: center;
     background-color: var(--color-black);
     font-family: var(--font-secondary);
-  height: 10000px;
+
 }
 
 /* 
@@ -42,7 +42,54 @@ body {
 ------------------------------------------------------ */
 /* BRON COLORPICKER: https://www.youtube.com/watch?v=m-z3xQL9rzU&list=PLFPAxDD3icirSnt2ZE9LdSWnnj1oqsmN-&index=3  */
 
+section {
+  scroll-margin-top: 80px; /* pas dit aan aan je gewenste afstand */
+}
+
+html {
+  scroll-behavior: smooth;
+}
 nav {
+     display: flex;
+     width: 100vw;
+  justify-content: center;
+     gap: 1em;
+     position: fixed;
+     margin-top: 1em;
+     z-index: 999;
+     flex-wrap: wrap;
+}
+
+nav a {
+    /* backdrop-filter: blur(25px); */
+    background-color: var(--color-black);
+    border: 0.7px solid rgba(255, 255, 255, 0.549);
+    padding-top: 1em;
+    border-radius: 50px;
+    padding: 0px 30px;
+    box-shadow: 0 30px 30px -15px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    text-decoration: none;
+    color: white;
+    transition: 0.3s;
+}
+
+
+nav a:hover {
+    scale: 1.1;
+}
+
+.nav-links {
+    display: flex;
+       gap: 1em;
+
+}
+
+ nav ul {
     background-color: #fff;
     padding-top: 1em;
     border-radius: 50px;
@@ -65,10 +112,7 @@ nav {
     /* Zorgt ervoor dat het voor andere elementen komt */
 }
 
-nav:hover {
-    padding-left: 120px;
-    /* Vergroot de breedte wanneer je eroverheen hovert */
-}
+
 
 nav .extra-text {
     opacity: 0;
@@ -470,7 +514,7 @@ span {
 ------------------------------------------------------ */
 
 .text-section {
-    background-image: linear-gradient(#A198F5, #E7D4F8);
+    background-image: linear-gradient(--, #E7D4F8);
     background-color: #A198F5;
     display: flex;
     flex-direction: column;
@@ -1028,6 +1072,7 @@ dialog[open] {
 
 .text-section-bottom {
     display: flex;
+    gap: 1rem;
     flex-wrap: wrap;
     /* Zorgt ervoor dat het op kleinere schermen onder elkaar komt */
     align-items: center;
@@ -1036,7 +1081,16 @@ dialog[open] {
     gap: 2rem;
     background-image: linear-gradient(#A198F5, #E7D4F8);
     background-color: #A198F5;
+}
 
+.text-section-bottom-wrapper {
+      display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    /* Zorgt ervoor dat het op kleinere schermen onder elkaar komt */
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
 }
 
 .text-container {
@@ -1102,7 +1156,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 6em 1em;
+    padding: 6em 1em 6em 1em;
 }
 
 .carousel-section {
@@ -1191,7 +1245,7 @@ h2 {
 }
 
 .carousel-card.active {
-   background-image: linear-gradient(#A198F5, #E7D4F8);
+   background-image: linear-gradient(var(--color-primary), var(--color-light-purple));
 
 }
 
@@ -1233,7 +1287,7 @@ h2 {
 
 /* FAQ styles komen hier onder zoals eerder */
 .weekly-nerd {
-    height: 2000px;
+    
     display: flex;
     justify-content: start;
 
@@ -1326,7 +1380,7 @@ summary:hover {
 }
 
 details p {
-    color: #cccccc;
+    color: var(--color-black);
     font-size: 0.95rem;
     opacity: 0;
     max-height: 0;
@@ -1508,165 +1562,3 @@ code {
 
 
 /* 
-------------------------------------------------------
-------------------------SECTION 7---------------------
------------------------------------------------------- */
-
-
-.scrollImages {
-    height: 100vh;
-    width: 100vw;
-    background-color: rgb(149, 166, 166);
-    display: flex;
-    position: relative;
-}
-
-
-/* image scroll */
-#imgScrollContainer {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 490px;
-    height: 500px;
-    z-index: 99;
-    opacity: 0;
-    background-color: rgb(21, 118, 118);
-    display: flex;
-    overflow: hidden;
-      pointer-events: none; /* 👈 cruciaal */ Cciel
-  }
-
-  .scroll-items {
-    display: flex;
-    transform: translateX(calc(-100% + 500px));
-  
-  }
-
-  
-  #imgScrollContainer img {
-    width: 500px;
-    height: 500px;
-    object-fit: cover;
-    flex-shrink: 0; /* zorg dat ze niet kleiner worden bij flex */
-  }
-
-
-
-  /* text scroll */
-/* .textItem:nth-of-type(1) {
-    background-color: rgb(47, 47, 179);
-}
-
-.textItem:nth-of-type(2) {
-    background-color: rgb(227, 158, 154);
-}
-
-.textItem:nth-of-type(3) {
-    background-color: rgb(199, 241, 198);
-}
-
-.textItem:nth-of-type(4) {
-    background-color: rgb(229, 115, 214);
-} */
-
-#textScrollContainer {
-    position: fixed;
-    top: 50%;
-    left: 40%;
-    transform: translate(-50%, -50%);
-    width: fit-content;
-    height: 150px;
-    z-index: 999;
-    display: flex;
-    overflow: hidden;
-    opacity: 0;
-      pointer-events: none; /* 👈 cruciaal */
-
-
-}
-
-
-.textItems {
-    display: flex;
-    flex-direction: column;
-    height: fit-content;
-    /* background-color: aliceblue; */
-    gap: 20px;
-}
-
-.textItem {
-    display: flex;
-    flex-direction: column;
-     gap: 25px;
-    
-}
-
-.textItem a {
-    background-color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    text-decoration: none;
-    color: black;
-    width: fit-content;
-}
-
-
-.textItem h2 {   
-    font-size: 40px;
-    color: #fff;
-    margin: 0;
-    line-height: 0.8;
-
-}
-
-.textItem p { 
-    margin: 0;
-    color: #fff;
-}
-  
-
-/* achtergrond scroll */
-#scrollContainer {
-    width: fit-content;
-    display: flex;
-    flex-shrink: 0;
-    overflow: hidden;
-    background-color: blue;
-
-}
-
-.content img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-
-}
-
-.content {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-
-.content:nth-of-type(1) {
-    background-color: aqua;
-}
-
-.content:nth-of-type(2) {
-    background-color: rgb(122, 33, 28);
-}
-
-.content:nth-of-type(3) {
-    background-color: aqua;
-}
-
-.content:nth-of-type(4) {
-    background-color: rgb(255, 0, 221);
-}
-
